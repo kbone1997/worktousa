@@ -85,7 +85,7 @@ async function fetchData(url, data)
         };
 
         const restResponse = await fetchData(restEndpoint, postBody);
-        console.log('Posted country details:', restResponse.data)
+        console.log('Posted country details:', restResponse.data);
 
         // Step 5 : Save all countries to a CSV file
         const csvData = countries.map(({ name, capital, currency }) => `"${name}","${capital}","${currency}"`).join('\n');
