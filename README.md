@@ -56,6 +56,6 @@ The query extracts the following fields for each country:
 # How to Run the Project
 Assuming that Node.js is installed.
 In terminal:
-- npm install (To install the required dependencies as per package.json)
-- node main.js (To run the file)
+- `npm install` (To install the required dependencies as per package.json)
+- `node main.js` (To run the file)
 
