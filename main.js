@@ -18,7 +18,7 @@ async function fetchData(url, data)
         {
             // change url with errorEndpoint403 or errorEndpoint500 for simulating error
             const response = await axios.post(url, data);
-            return response;
+            return response.data.id;
         } catch (error)
         {
             if (error.response)
@@ -72,11 +72,11 @@ async function fetchData(url, data)
             throw new Error('No country data retrieved from GraphQL API');
         }
 
-        console.log('Fetched country data:', countries);
+        //console.log('Fetched country data:', countries);
 
         // Step 2: Select one country and post its details to the REST API
         // First country selected
-        const selectedCountry = countries[0]; 
+        const selectedCountry = countries[0];
         const restEndpoint = 'https://jsonplaceholder.typicode.com/posts';
         const postBody = {
             title: `Country: ${selectedCountry.name}`,
@@ -85,7 +85,7 @@ async function fetchData(url, data)
         };
 
         const restResponse = await fetchData(restEndpoint, postBody);
-        console.log('Posted country details:', restResponse.data);
+        console.log({ "id": restResponse });
 
         // Step 5 : Save all countries to a CSV file
         const csvData = countries.map(({ name, capital, currency }) => `"${name}","${capital}","${currency}"`).join('\n');
